@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        jsoupVersion = '1.15.3'
+    }
+}
+
+
+plugins {
+    id 'java'
+}
+
+//Could not find method sourceCompatibility() for arguments [18] on root project 'gradle-practice' of
+// type org.gradle.api.Project.
+
+
+//sourceCompatibility JavaVersion.VERSION_18
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // group-id:artifact-id:version
+    implementation "org.jsoup:jsoup:${jsoupVersion}"
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+// SourceSets represents a logical group of java source and resource files.
+// Inform the where is the java source to gradle
+sourceSets {
+    // Contains production source code of the project,
+    // Which is compiled and assembled into a JAR
+
+    // `main` is the entry name of source set, This is id (plugins: id 'java')
+    main {
+        java { // configures the java source this source set
+            srcDir 'src'
+        }
+    }
+}
