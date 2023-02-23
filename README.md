@@ -7,8 +7,7 @@
 - Build
 - Dependency management
 - Faster performance and simpler syntax than [Maven](https://maven.apache.org/guides/) \
-Gradle support caching and skipping the tasks when change doesn't occurs.
-- 
+Gradle support caching and skipping the tasks when change doesn't occur.
 
 ## How to operate?
 
@@ -41,9 +40,11 @@ $ brew install gradle
 $ gradle --version
 ```
 
-### Shortuct
+### Command
 ```bash
 $ gradle build
+$ gradle build -x test # exclude test
+# Print all tasks
 $ gradle tasks
 $ gradle properties
 # Deletes the build folder and lets you start fresh
@@ -112,10 +113,10 @@ dependencies {
 
 ### Cache
 Gradle stores the cache files at C:\Users\{USER_NAME}\.gradle\caches\{GRADLE_VERSION}.
-1. If build, gradle stores the cache files
-2. when build, Check  dependency checking in ~/.gradle/caches if already exsists
+1. If build is executed, gradle would store the cache files
+2. when building, Check  dependency checking in ~/.gradle/caches if already exsists
 3. If exists, not install it \
-Not exists, install and refresh the cache f
+Not exists, install and refresh the cache.
 
 ### SourceSets
 Notify where the source files to gradle
@@ -164,5 +165,12 @@ public class Practice {
 }
 ```
 
+if `runtimeOnly` set, 
+```log
+error: package org.jsoup does not exist
+import org.jsoup.Jsoup;
+```
+
+Use `implementation` for required compile and running both.
 
 ### What's the sequence of tasks? How to customize it? (ex. annotation)
